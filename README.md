@@ -101,6 +101,8 @@
 
 В рамках этого анализа было проделано много работы в python, давайте ее разберем.
 
+### Код для графиков, исключение выбросов
+
 1. Создаем координаты по почтовым индексам (берем среднее по каждому индексу):
 <img width="583" alt="4 1 Координаты по индексам" src="https://user-images.githubusercontent.com/114583379/193906853-af52663e-8938-4c75-b83e-ce3fc0ea2107.PNG">
 
@@ -129,13 +131,16 @@
 <img width="734" alt="4 9 delivered" src="https://user-images.githubusercontent.com/114583379/193909099-770d4a52-bbd3-45e9-8f63-cae96420550c.PNG">
 
 10. Создаем таблицу и график с распределением дней доставки всех доставленных заказов (delivered_count)
+<img width="627" alt="4 10 delivered_count" src="https://user-images.githubusercontent.com/114583379/193911973-64eb0d28-8e36-47cc-ba8f-9caf17b3e375.PNG">
 
 11. Создаем таблицу и график с распределением дней опоздания опоздавших заказов (late_deliveries_count)
+<img width="626" alt="4 11 late_deliveries_count" src="https://user-images.githubusercontent.com/114583379/193911975-d27eea94-a005-4960-92a8-92e305015571.PNG">
 
 12. Наши данные включают в себя выбросы, что влияет на наши средние значения. Создаем функцию для исключения выбросов filter_outliers
+<img width="645" alt="4 12 filter_outliers" src="https://user-images.githubusercontent.com/114583379/193911982-84fdbf9f-9838-478f-b24c-90072bb7d6a3.PNG">
 
 13. Исключаем выбросы для обеих таблиц и сохраняем обе в csv (late_deliveries_no_outliers_count, delivered_no_outliers_count)
-
+<img width="636" alt="4 12 filter_outliers2" src="https://user-images.githubusercontent.com/114583379/193911994-2446c669-7d0a-427a-bbeb-47c2972cfe18.PNG">
 
 
 
