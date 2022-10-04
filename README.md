@@ -93,3 +93,49 @@
 
 Таким же образом я поступила с продавцами. Размеры пузырьков на карте соответствуют относительному кол-ву покупателей в штате.
 
+## Анализ времени доставки
+
+На четвертой странице дэшборда представлен анализ времени доставки товаров по городам:
+
+<img width="920" alt="Страница 4 - Анализ времени доставки товаров" src="https://user-images.githubusercontent.com/114583379/193905899-4d981a64-dbb9-43fc-90b6-8645b5c1ad2c.PNG">
+
+В рамках этого анализа было проделано много работы в python, давайте ее разберем.
+
+1. Создаем координаты по почтовым индексам (берем среднее по каждому индексу):
+<img width="583" alt="4 1 Координаты по индексам" src="https://user-images.githubusercontent.com/114583379/193906853-af52663e-8938-4c75-b83e-ce3fc0ea2107.PNG">
+
+2. Соединяем таблицы customers, coordinates в customers2
+<img width="720" alt="4 2 customers2" src="https://user-images.githubusercontent.com/114583379/193907281-c3862a67-6be6-4ffe-aa57-e4eaa699282f.PNG">
+
+3. Соединяем таблицы sellers, coordinates в sellers2
+<img width="551" alt="4 3 sellers2" src="https://user-images.githubusercontent.com/114583379/193907287-83a14b53-1f23-4f5f-a2da-8e55ee9ccca8.PNG">
+
+4. Соединяем таблицы orders, order items в orders2
+<img width="721" alt="4 4 orders2" src="https://user-images.githubusercontent.com/114583379/193907291-2e420f25-24f5-419e-b254-b2c6fa60e81b.PNG">
+
+5. Меняем в orders2 тип дат на дату и добавляем столбцы по датам без времени
+<img width="661" alt="4 5 orders2 types" src="https://user-images.githubusercontent.com/114583379/193907840-1e0509a1-2090-4cd1-8a6a-e8f94db0c1d2.PNG">
+
+6. Соединяем таблицы orders2, customers2 в cust_seller чтобы получить таблицу с данными продавцов и покупателей
+<img width="729" alt="4 6 cust_seller" src="https://user-images.githubusercontent.com/114583379/193908213-f7edb92d-8c3a-4853-a1df-fdddb05565af.PNG">
+
+7. Соединяем cust_seller с sellers2 чтобы добавить больше информации о продавцах в таблицу deliveries - теперь есть таблица с данными о доставках, покупателях и продавцах
+<img width="728" alt="4 7 deliveries" src="https://user-images.githubusercontent.com/114583379/193908218-136886f5-10f7-4733-b852-9fb97bb2a5db.PNG">
+
+8. Обрабатываем deliveries (меняем тип дат, убираем ненужные столбцы, убираем дубли, добавляем столбцы с кол-вом дней доставки, кол-вом дней ожидаемой доставки и кол-вом дней опоздания)
+<img width="727" alt="4 8 deliveries worked" src="https://user-images.githubusercontent.com/114583379/193908692-ecb87f36-6d1d-45bb-a65d-e56073ce2a20.PNG">
+
+9. Переводим получившиеся ранее вычисления в дни и создаем таблицу с доставленными заказами delivered  - убираем строки где день доставки null из deliveries.
+<img width="734" alt="4 9 delivered" src="https://user-images.githubusercontent.com/114583379/193909099-770d4a52-bbd3-45e9-8f63-cae96420550c.PNG">
+
+10. Создаем таблицу и график с распределением дней доставки всех доставленных заказов (delivered_count)
+
+11. Создаем таблицу и график с распределением дней опоздания опоздавших заказов (late_deliveries_count)
+
+12. Наши данные включают в себя выбросы, что влияет на наши средние значения. Создаем функцию для исключения выбросов filter_outliers
+
+13. Исключаем выбросы для обеих таблиц и сохраняем обе в csv (late_deliveries_no_outliers_count, delivered_no_outliers_count)
+
+
+
+
