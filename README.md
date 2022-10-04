@@ -142,5 +142,16 @@
 13. Исключаем выбросы для обеих таблиц и сохраняем обе в csv (late_deliveries_no_outliers_count, delivered_no_outliers_count)
 <img width="636" alt="4 12 filter_outliers2" src="https://user-images.githubusercontent.com/114583379/193911994-2446c669-7d0a-427a-bbeb-47c2972cfe18.PNG">
 
+### Код для сортировки по городам
+
+1. Убираем из deliveries найденную строку с неверно заданным городом продавца
+2. Группируем по городам кол-во заказов (две таблицы - одну по всем заказам, одну по опоздавшим)
+<img width="641" alt="4 13 города" src="https://user-images.githubusercontent.com/114583379/193913629-08b91a64-ba7a-4901-bcd7-41eeea23cfa1.PNG">
+
+3. Получаем средние координаты по городам
+<img width="415" alt="4 14 coordinates" src="https://user-images.githubusercontent.com/114583379/193913636-f29abae7-6377-4002-b1a8-cd29ac0c33e5.PNG">
+
+4. Соединяем обе таблицы, добавляем координаты, вычисляем процент опоздавших. Для анализа я взяла топ 50 городов по кол-ву заказов. Сортируем по проценту опоздавших  заказов и сохраням в csv - deliveries_seller_city_top50.csv
+<img width="647" alt="4 15 cities final" src="https://user-images.githubusercontent.com/114583379/193913638-a46fcdfe-f33c-4a5f-bd19-fc39a72fa71b.PNG">
 
 
